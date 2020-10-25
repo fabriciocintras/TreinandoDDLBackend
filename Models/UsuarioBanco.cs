@@ -5,13 +5,13 @@ namespace TreinandoDDLBackend.Models
 {
     public class UsuarioBanco
     {
-        private const string dadosConexao = "Database=treinandoDDLBackend,Data Source= localhost; User id= root";
+        private const string dadosConexao = "Database=treinandoDDLBackend; Data Source= localhost; User id= root";
 
         public void Inserir(Usuario usuario)
         {
             MySqlConnection conexao = new MySqlConnection(dadosConexao);
             conexao.Open();
-            string query = "insert into Usuario(Nome, Senha)values(@Nome, @Senha)";
+            string query = "insert into Usuario(Nome, Senha)value(@Nome, @Senha)";
             MySqlCommand comando = new MySqlCommand(query,conexao);
             comando.Parameters.AddWithValue("@Nome", usuario.Nome);
             comando.Parameters.AddWithValue("@Senha", usuario.Senha);
